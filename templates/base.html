@@ -46,6 +46,16 @@
                         <a class="nav-link" href="{% url 'login' %}">Login</a>
                     </li>
                     {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'view_cart' %}">
+                            {% if product_count > 0 %}
+                            <i class="fas fa-shopping-cart"></i>Cart
+                            <label class="badge badge-warning">{{ product_count }}</label>
+                            {% else %}
+                            <i class="fas fa-shopping-cart"></i>Cart
+                            {% endif %}
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
