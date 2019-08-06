@@ -15,7 +15,7 @@ configobj==5.0.6
 constantly==15.1.0
 cryptography==2.1.4
 distro-info===0.18ubuntu0.18.04.1
-Django==2.0.2
+Django==2.2.4
 django-forms-bootstrap==3.1.0
 docutils==0.14
 hibagent==1.0.1
@@ -59,10 +59,10 @@ pyserial==3.4
 python-apt==1.6.4
 python-dateutil==2.8.0
 python-debian==0.1.32
-pytz==2019.1
+pytz==2019.2
 pyxdg==0.25
 PyYAML==5.1
-requests==2.18.4
+requests==2.22.0
 requests-unixsocket==0.1.5
 roman==2.0.0
 rsa==3.4.2
@@ -70,8 +70,10 @@ s3transfer==0.2.1
 SecretStorage==2.3.1
 service-identity==16.0.0
 six==1.12.0
+sqlparse==0.3.0
 ssh-import-id==5.7
 stevedore==1.30.1
+stripe==2.33.0
 systemd-python==234
 Twisted==17.9.0
 ufw==0.36

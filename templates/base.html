@@ -1,17 +1,21 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
-     <!--Custom CSS file-->
+    <!--Custom CSS file-->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Confectionery Castle</title>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg">
@@ -23,10 +27,10 @@
                 <ul class="navbar-nav">
                     {% if request.user.is_authenticated %}
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'products' %}">Products</a>
+                        <a class="nav-link" href="{% url 'products' %}">Products</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">2</a>
+                        <a class="nav-link" href="#">2</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -60,7 +64,16 @@
             </div>
         </nav>
     </header>
-    {% block content %}
-    {% endblock %}
+    <div class="container content-container">
+        <!-- Django alert messages to inform users when they have logged in, logged out or registered-->
+        {% if messages %} {% for message in messages %}
+        <div class="col-sm-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8">
+            <div class="alert alert-success" role="alert">
+                {{message}}
+            </div>
+        </div>
+        {% endfor %} {% endif %} {% block content %} {% endblock %}
+    </div>
 </body>
+
 </html>
