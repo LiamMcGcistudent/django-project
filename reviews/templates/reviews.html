@@ -1,32 +1,29 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-    {% for review in reviews %}
-        <div class="row">
-            <div class="col-md-2 col-sm-3 text-center">
-                <a class="story-img" href="#">
+{% extends 'base.html' %} {% load static %} {% block content %} {% for review in reviews %}
+<div class="row">
+    <div class="col-md-2 col-sm-3 text-center">
+        <a class="story-img" href="#">
                     <img src="/static/img/blank-profile-picture-973460_960_720.png" class="img-circle">
                 </a>
-                <p><span class="boldtext">Author:</span> {{user}}</p>
+        <p><span class="boldtext">Author:</span> {{user}}</p>
+    </div>
+    <div class="col-md-10 col-sm-9">
+        <h3>{{ review.title }}</h3>
+        <div class="row">
+            <div class="col-xs-9">
+                <p>{{ review.content|truncatewords:30 }}</p>
+                <p><a href="{% url 'full_review' review.id %}" class="btn btn-info">Read more</a></p>
+                <p><span class="boldtext">Published on:</span> {{ review.published_date }} </p>
+                <p><span class="boldtext">Views:</span> {{review.views}}</p>
+                <p><span class="boldtext">Tag:</span> {{ review.tag }}</p>
             </div>
-            <div class="col-md-10 col-sm-9">
-                <h3>{{ review.title }}</h3>
-                <div class="row">
-                    <div class="col-xs-9">
-                        <p>{{ review.content|truncatewords:30 }}</p>
-                        <p><a href="{% url 'full_review' review.id %}"  class="btn btn-default">Read more</a></p>
-                        <p><span class="boldtext">Published on:</span> {{ review.published_date }} </p>
-                        <p><span class="boldtext">Views:</span> {{review.views}}</p>
-                        <p><span class="boldtext">Tag:</span> {{ review.tag }}</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-9 ml-auto">
-                        <p><a href="{% url 'new_review' %}" class="btn btn-success"><i class="fas fa-pen-nib"></i></a></p>
-                    </div>
-                </div>
-            </div>
-            <hr>
         </div>
-    {% endfor %}
+    </div>
+    <hr>
+</div>
+{% endfor %}
+<div class="row">
+    <div class="col-12 ml-auto">
+        <p><a href="{% url 'new_review' %}" class="btn btn-success"><i class="fas fa-pen-nib"></i></a></p>
+    </div>
+</div>
 {% endblock %}
