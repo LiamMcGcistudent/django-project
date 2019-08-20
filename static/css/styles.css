@@ -1,6 +1,20 @@
+/**Accounts**/
+
 .profile-image{
     display: block;
     height: 15rem;
     margin: 0 auto;
 }
 
+/**Accounts**/
+
+/**Reviews**/
+
+.img-circle,
+.img-blogpost{
+    display: block;
+    height: 10rem;
+    margin: 0 auto;
+}
+
+/**Reviews**/

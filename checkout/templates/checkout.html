@@ -26,8 +26,8 @@
     {% endfor %}
 </div>
 <div class="row">
-    <p>Total</p>
-    <p><span class="glyphicon glyphicon-gbp" aria-hidden="true"></span>{{ total }}</p>
+    <p> Total</p>
+    <p><span class="glyphicon glyphicon-gbp" aria-hidden="true"></span> £ {{ total }}</p>
 </div>
 
 <form role="form payment_form" method="post" id="payment-form" action="{% url 'checkout' %}">

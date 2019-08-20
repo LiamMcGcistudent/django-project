@@ -1,5 +1,42 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}{% load static from staticfiles %} {% block content %}
 
-{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>Welcome to Confectionery Castle!</h2>
+            <h4>Your one stop shop for all things pastries and sweets!</h4>
+        </div>
+    </div>
+</div>
+<section id="products">
+    <h2 class="text-center pt-5 pb-2">Check out our newest additions!</h2>
+    <hr class="section-hr my2">
+    <div class="container mt-5">
+        <div class="row">
+            {% if products %} {% for product in products %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top">
+                    <div class="card-img-overlay">
+                        <h2>
+                            <span class="badge badge-secondary text-white">£{{product.price}}</span>
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <h4 class="pt-3">{{product.name}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}{% else %}
+            <div class="col-md-12">
+                <p>No new products!</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
 
 {% endblock %}
