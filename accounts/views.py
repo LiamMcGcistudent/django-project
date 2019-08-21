@@ -3,7 +3,10 @@ from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
+from accounts.models import UserProfile
 from .forms import UserLoginForm, UserRegistrationForm
+from reviews.models import Review
+from django.db.models import Count
 
 
 def registration(request):
@@ -32,7 +35,9 @@ def user_profile(request):
     """
     Profile page for the logged in user.
     """
+    
     user = User.objects.get(username=request.user.username)
+    user_reviews = User.objects.annotate(total_reviews = Count('author'))
     return render(request, "profile.html", {"profile": user})
 
 
