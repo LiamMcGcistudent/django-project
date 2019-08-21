@@ -37,7 +37,7 @@ def user_profile(request):
     """
     
     user = User.objects.get(username=request.user.username)
-    user_reviews = User.objects.annotate(total_reviews = Count('author'))
+    
     return render(request, "profile.html", {"profile": user})
 
 
