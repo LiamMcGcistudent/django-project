@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% load bootstrap_tags %}
+{% block title %}{{ suggestion.title }}{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1>{{ suggestion.title }}</h1><span class="badge badge-danger">{{ suggestion.status }}</span>
+    <div class="inline">
+        <p class="p5"><span class=""><i class="fa fa-eye p5"></i>{{ suggestion.views }}<i class="fa fa-arrow-up p5"></i>{{ suggestion.upvotes }}</span></p>
+        {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'upvote_suggestion' suggestion.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="quantity" value="1">
+            <input type="hidden" name="id" value="{{ suggestion.id }}">
+            <button type="submit" class="btn btn-outline-primary upvote-btn"><a>Upvote suggestion</a></button>
+        </form>
+        {% elif user.suggested_by == user %}
+        <span>Sorry, you may not upvote your own suggestion!</span>
+        {% else %}
+        <span>Please login to upvote a suggestion.</span>
+        {% endif %}
+    </div>
+    <p class="lead">{{ suggestion.content }}</p>
+    <hr class="my-4">
+    <p>Suggested by: {{suggestion.suggested_by }} on {{ suggestion.created_date }}</p>
+</div>
+
+{% endblock %}

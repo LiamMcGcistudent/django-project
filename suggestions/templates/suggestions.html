@@ -1,0 +1,32 @@
+{% extends 'base.html' %}{% load static from staticfiles%}
+
+{% block title %}Suggestions{% endblock %}
+
+{% block heading %}
+<div class="row">
+  <div class="col-sm-12">
+    <h1>
+      <span>Suggestions</span>
+   <a href="{% url 'make_suggestion' %}"><button type="button" class="btn btn-primary pull-right p5">Make a Suggestion</button></a>
+   </h1>
+  </div>
+</div>
+{% endblock %}
+{% block content %} {% for suggestion in suggestions %}
+<div class="row">
+  <div class="col-sm-12">
+<div class="card border-primary mb-3">
+  <div class="card-header"><span class="badge badge-danger">{{ suggestion.status }}</span><span class="card-link"><i class="fa fa-eye p5"></i>{{ suggestion.views }}
+    <i class="fa fa-arrow-up p5"></i>{{ suggestion.upvotes }}</span></div>
+  <div class="card-body">
+    <h4 class="card-title">{{ suggestion.title|capfirst }}</h4>
+    <p class="card-text">{{ suggestion.content|capfirst }}</p>
+    <div class="card-footer text-muted">
+      {{ suggestion.suggested_by|capfirst }} | {{ suggestion.created_date }}
+      <a href="{% url 'single_suggestion' suggestion.id %}" class="card-link">View suggestion</a>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+{% endfor %} {% endblock %}

@@ -11,7 +11,6 @@ class UserProfile(models.Model):
 	description = models.TextField(blank=True)
 	img = models.ImageField(upload_to='main/profile/%Y/%m/%d/', blank=True)
 	phone = models.CharField(max_length=15)
-	reviews = models.IntegerField(default=0)
 	joined = models.DateTimeField(default=datetime.now, blank=True)
 	def __str__(self):
 		return self.user.email

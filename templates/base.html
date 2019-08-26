@@ -29,6 +29,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'reviews' %}">Reviews</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{% url 'suggestions' %}" class="nav-link">Suggestions</a>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto">
                     {% if request.user.is_authenticated %}
@@ -69,6 +72,7 @@
             </div>
         </div>
         {% endfor %} {% endif %}
+        {% block heading %} {% endblock %}
         {% block content %} {% endblock %}
 
     </div>
