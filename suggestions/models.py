@@ -29,7 +29,7 @@ class Suggestion(models.Model):
         return self.title
         
 class Upvotes(models.Model):
-    """Bug upvotes"""
+    """Suggestion upvotes"""
     upvote_user = models.ForeignKey(User, on_delete=models.CASCADE)
     suggestion = models.ForeignKey(Suggestion, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)

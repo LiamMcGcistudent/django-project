@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.core.paginator import Paginator
 from .models import Review
 from .forms import ReviewForm
 
@@ -11,6 +12,9 @@ def get_reviews(request):
     """
     
     reviews = Review.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    paginator = Paginator(reviews, 5)
+    page = request.GET.get('page')
+    reviews = paginator.get_page(page)
     return render(request, "reviews.html", {'reviews': reviews})
 
 def full_review(request, pk):
