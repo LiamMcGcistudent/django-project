@@ -28,17 +28,13 @@ class Suggestion(models.Model):
     def __unicode__(self):
         return self.title
         
-class Upvotes(models.Model):
+class suggestionUpvote(models.Model):
     """Suggestion upvotes"""
-    upvote_user = models.ForeignKey(User, on_delete=models.CASCADE)
-    suggestion = models.ForeignKey(Suggestion, on_delete=models.CASCADE)
-    created_date = models.DateTimeField(auto_now_add=True)
-    
-    class Meta:
-        verbose_name_plural = "Up votes"
-    
+    upvoted_suggestion = models.ForeignKey(Suggestion, on_delete=models.CASCADE, default=None)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+
     def __str__(self):
-        return self.upvote_user.username
+        return str(self.user)
         
     
     

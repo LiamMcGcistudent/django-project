@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Suggestion, Upvotes
+from .models import Suggestion, suggestionUpvote
 
 # Register your models here.
 
@@ -8,4 +8,4 @@ class SuggestionAdmin(admin.ModelAdmin):
     list_filter = ['status',]
     
 admin.site.register(Suggestion, SuggestionAdmin)
-admin.site.register(Upvotes)
+admin.site.register(suggestionUpvote)

@@ -1,23 +1,17 @@
-{% extends 'base.html' %} {% load bootstrap_tags %}
-{% block title %}{{ suggestion.title }}{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% load bootstrap_tags %} {% block title %}{{ suggestion.title }}{% endblock %} {% block content %}
 <div class="jumbotron">
-    <h1>{{ suggestion.title }}</h1><span class="badge badge-danger">{{ suggestion.status }}</span>
     <div class="inline">
-        <p class="p5"><span class=""><i class="fa fa-eye p5"></i>{{ suggestion.views }}<i class="fa fa-arrow-up p5"></i>{{ suggestion.upvotes }}</span></p>
-        {% if user.is_authenticated %}
-        <form method="POST" action="{% url 'upvote_suggestion' suggestion.id %}">
-            {% csrf_token %}
-            <input type="hidden" name="quantity" value="1">
-            <input type="hidden" name="id" value="{{ suggestion.id }}">
-            <button type="submit" class="btn btn-outline-primary upvote-btn"><a>Upvote suggestion</a></button>
-        </form>
-        {% elif user.suggested_by == user %}
-        <span>Sorry, you may not upvote your own suggestion!</span>
+        <h1>{{ suggestion.title }}</h1><span class="badge badge-danger">{{ suggestion.status }}</span>
+    </div>
+    <div class="inline">
+        <p class="p5"><span class=""><i class="fa fa-eye p5"></i>{{ suggestion.views }}</span></p>
+        <p class="p5"><span class=""><i class="fa fa-arrow-up p5"></i>{{ suggestion.suggestion_upvotes }}</span></p>
+        {% if upvoted %}
+        <div class='btn btn-secondary'>Upvoted <i class="fa fa-star" aria-hidden="true"></i></div>
+        {% elif not user.is_authenticated %}
+        <div class='btn btn-secondary'>Upvote <i class="fa fa-star" aria-hidden="true"></i></div>
         {% else %}
-        <span>Please login to upvote a suggestion.</span>
-        {% endif %}
+        <a class='btn btn-primary' href="{% url 'upvote_suggestion' suggestion.id %}">Upvote <i class="fa fa-star" aria-hidden="true"></i></a> {% endif %}
     </div>
     <p class="lead">{{ suggestion.content }}</p>
     <hr class="my-4">

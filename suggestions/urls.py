@@ -6,5 +6,5 @@ urlpatterns = [
     path('', all_suggestions, name='suggestions'),
     path('<int:pk>/', single_suggestion, name='single_suggestion'),
     path('make_suggestion', make_suggestion, name='make_suggestion'),
-    path('upvote/<int:suggestion_id>/', upvote_suggestion, name='upvote_suggestion')
+    path('upvote/<int:pk>/', upvote_suggestion, name='upvote_suggestion')
     ]

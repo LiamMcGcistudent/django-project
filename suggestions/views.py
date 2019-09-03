@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Suggestion, Upvotes
+from .models import Suggestion, suggestionUpvote
 from django.utils import timezone
 from django.contrib import messages
 from .forms import SuggestionForm
@@ -42,19 +42,19 @@ def make_suggestion(request):
     return render(request, 'make_suggestion.html', {'form':form})
     
 @login_required
-def upvote_suggestion(request, suggestion_id):
-    """
-    Allows users to upvote a suggestion they like
-    """
-    suggestion = Suggestion.objects.get(pk=suggestion_id)
-    check_voted = Upvotes.objects.filter(upvote_user=request.user, suggestion=suggestion)
-    if not check_voted:
-        upvote = Upvotes(upvote_user=request.user, suggestion=suggestion)
-        upvote.save()
-        suggestion.suggestion_upvotes +=1
-        suggestion.save()
-        messages.success(request, "Upvoted!", extra_tags="alert-success")
-        return redirect(all_suggestions)
-    else:
-        messages.error(request, 'Sorry, you have already upvoted this suggestion!', extra_tags="alert-danger")
-        return redirect(single_suggestion, suggestion.pk)
+def upvote_suggestion(request, pk):
+    """Adds one upvote point"""
+    suggestion = get_object_or_404(Suggestion, pk=pk)
+    suggestion.suggestion_upvotes += 1
+    suggestion.views -= 1
+    suggestion.save()
+
+    try:
+        upvote = get_object_or_404(
+            suggestionUpvote, upvoted_suggestion=suggestion, user=request.user)
+    except:
+        upvote = suggestionUpvote()
+    upvote.upvoted_suggestion = suggestion
+    upvote.user = request.user
+    upvote.save()
+    return(redirect(single_suggestion, pk))
