@@ -34,3 +34,11 @@ body > header > nav{
 
 /**Suggestions**/
 
+/**Suggestions**/
+
+/**Products**/
+.product-image {
+    display: block;
+    height: 15rem;
+    margin: 0 auto;
+}
