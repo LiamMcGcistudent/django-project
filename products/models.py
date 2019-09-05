@@ -9,6 +9,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='images')
     is_published = models.BooleanField(default=False)
     added = models.DateTimeField(blank=True, default=datetime.now)
+    views = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name

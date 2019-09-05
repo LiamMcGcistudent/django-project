@@ -14,7 +14,7 @@
 		{% for product in products %}
 		<div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
 			<div class="card">
-				<img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}" />
+				<a href="{% url 'product_detail' product.id %}"><img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}"/></a>
 
 				<h3>{{ product.name }}</h3>
 				<p class="product-description">{{ product.description }}</p>
