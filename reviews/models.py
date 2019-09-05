@@ -18,3 +18,15 @@ class Review(models.Model):
     
     def __unicode__(self):
         return self.title
+        
+class ReviewComment(models.Model):
+    """
+    Allows a user to comment on a review
+    """
+    review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=False)
+    comment = models.TextField()
+    created_date = models.DateTimeField(null=True, blank=True, default=timezone.now)
+    
+    def __unicode__(self):
+        return self.comment

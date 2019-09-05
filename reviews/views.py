@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator
-from .models import Review
-from .forms import ReviewForm
+from .models import Review, ReviewComment
+from .forms import ReviewForm, CommentForm
 
 def get_reviews(request):
     """
@@ -28,7 +28,8 @@ def full_review(request, pk):
     review = get_object_or_404(Review, pk=pk)
     review.views +=1
     review.save()
-    return render(request, "review.html", {'review': review})
+    comments = ReviewComment.objects.filter(review=review)
+    return render(request, "review.html", {'review': review, 'comments':comments})
 
 def create_or_edit_review(request, pk=None):
     """
@@ -45,3 +46,22 @@ def create_or_edit_review(request, pk=None):
     else:
         form = ReviewForm(instance=review)
     return render(request, 'reviewform.html', {'form': form})
+    
+def add_comment(request, pk):
+    """
+    Allows a user to add a comment to a review
+    """
+    
+    review = get_object_or_404(Review, pk=pk)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.review = review
+            comment.save()
+            return redirect('full_review', pk=review.pk)
+    else:
+        form = CommentForm()
+    return render(request, "addcomment.html", {"form": form})
