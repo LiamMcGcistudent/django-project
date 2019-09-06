@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator
-from .models import Review, ReviewComment
+from .models import Review, Comment
 from .forms import ReviewForm, CommentForm
 
 def get_reviews(request):
@@ -26,10 +26,23 @@ def full_review(request, pk):
     """
     
     review = get_object_or_404(Review, pk=pk)
-    review.views +=1
-    review.save()
-    comments = ReviewComment.objects.filter(review=review)
-    return render(request, "review.html", {'review': review, 'comments':comments})
+    
+    
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST or None)
+        if comment_form.is_valid():
+            comment = request.POST.get('comment')
+            review_comment = Comment.objects.create(review=review, author=request.user, comment=comment)
+            review_comment.save()
+            return redirect('full_review', review.pk)
+    else:
+        comment_form = CommentForm
+        review.views +=1
+        review.save()
+    
+    comments = Comment.objects.filter(review=review)
+    comment_form = CommentForm()
+    return render(request, "review.html", {'review': review, 'comments': comments, 'comment_form': comment_form,})
 
 def create_or_edit_review(request, pk=None):
     """
@@ -46,22 +59,3 @@ def create_or_edit_review(request, pk=None):
     else:
         form = ReviewForm(instance=review)
     return render(request, 'reviewform.html', {'form': form})
-    
-def add_comment(request, pk):
-    """
-    Allows a user to add a comment to a review
-    """
-    
-    review = get_object_or_404(Review, pk=pk)
-    if request.method == "POST":
-        form = CommentForm(request.POST)
-        
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.author = request.user
-            comment.review = review
-            comment.save()
-            return redirect('full_review', pk=review.pk)
-    else:
-        form = CommentForm()
-    return render(request, "addcomment.html", {"form": form})

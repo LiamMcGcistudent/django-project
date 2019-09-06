@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Suggestion, suggestionUpvote
+from .models import Suggestion, suggestionUpvote, SuggestionComment
 
 # Register your models here.
 
@@ -9,3 +9,4 @@ class SuggestionAdmin(admin.ModelAdmin):
     
 admin.site.register(Suggestion, SuggestionAdmin)
 admin.site.register(suggestionUpvote)
+admin.site.register(SuggestionComment)

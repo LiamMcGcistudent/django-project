@@ -1,5 +1,5 @@
 from django import forms
-from .models import Review, ReviewComment
+from .models import Review, Comment
 
 class ReviewForm(forms.ModelForm):
     class Meta:
@@ -7,5 +7,6 @@ class ReviewForm(forms.ModelForm):
         fields = ('title', 'content', 'image', 'tag', 'published_date')
         
 class CommentForm(forms.ModelForm):
-    model = ReviewComment
-    fields = ('comment',)
+    class Meta:
+        model = Comment
+        fields = ('comment',)

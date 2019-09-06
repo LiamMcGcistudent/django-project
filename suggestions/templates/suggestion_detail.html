@@ -17,5 +17,39 @@
     <hr class="my-4">
     <p>Suggested by: {{suggestion.suggested_by }} on {{ suggestion.created_date }}</p>
 </div>
+<hr>
+<div class="col-sm-12">
+
+        <form method="POST">
+            <fieldset>
+                <h1>Comments:</h1>
+                {% csrf_token %} {{ comment_form|as_bootstrap }}
+                {% if user.is_authenticated %}
+                <button type="submit" class="btn btn-primary">Submit</button>
+                {% else %}
+                <p><strong>Please login to leave a comment.</strong></p>
+                <button type="button" class="btn btn-primary disabled">Submit</button>
+                {% endif %}
+                
+            </fieldset>
+        </form>
+        
+        {% if comments.count == 0 %}
+        <br> 
+        <h4>There are no comments yet!</h4>
+        {% else %}
+        
+        {% for comment in comments %}
+        <hr class="my-4">
+        <blockquote class="blockquote text-left">
+            <p class="mb-0">{{ comment.comment|capfirst }}</p>
+            <footer class="blockquote-footer">{{ comment.review|capfirst }}<cite title="Source Title" class="title"> | {{ comment.posted_by|capfirst }}</cite>
+            <datetime> on {{ comment.created_date }}</datetime></footer>
+        </blockquote>
+        {% endfor %}
+        
+        {% endif %}
+
+    </div>
 
 {% endblock %}

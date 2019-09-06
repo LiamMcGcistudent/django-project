@@ -19,7 +19,7 @@ class Review(models.Model):
     def __unicode__(self):
         return self.title
         
-class ReviewComment(models.Model):
+class Comment(models.Model):
     """
     Allows a user to comment on a review
     """

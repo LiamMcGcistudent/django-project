@@ -37,4 +37,14 @@ class suggestionUpvote(models.Model):
         return str(self.user)
         
     
+class SuggestionComment(models.Model):
+    """
+    Allows a user to comment on a review
+    """
+    suggestion = models.ForeignKey(Suggestion, on_delete=models.CASCADE, related_name='comments')
+    posted_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=False)
+    comment = models.TextField()
+    created_date = models.DateTimeField(null=True, blank=True, default=timezone.now)
     
+    def __unicode__(self):
+        return self.comment

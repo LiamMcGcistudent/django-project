@@ -24,7 +24,7 @@ def single_suggestion(request, pk):
         comment_form = SuggestionCommentForm(request.POST or None)
         if comment_form.is_valid():
             comment = request.POST.get('comment')
-            suggestion_comment = SuggestionComment.objects.create(suggestion=suggestion, posted_by=request.user, comment=comment)
+            suggestion_comment = SuugestionComment.objects.create(suggestion=suggestion, posted_by=request.user, comment=comment)
             suggestion_comment.save()
             return redirect('single_suggestion', suggestion.pk)
     else:
