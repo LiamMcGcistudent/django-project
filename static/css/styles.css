@@ -1,7 +1,13 @@
 /**Navbar**/
 
-body > header > nav{
-    background-color: #002366 !important
+body>header>nav {
+    background-color: #002366 !important;
+}
+
+.navbar,
+.nav {
+    font-family: 'Parisienne', cursive;
+    font-size: 1.25em;
 }
 
 .logo {
@@ -11,9 +17,39 @@ body > header > nav{
 
 /**Navbar**/
 
+/**Home**/
+
+.section-lead {
+    background: url("/static/img/array-assorted-assortment-1236680.jpg") no-repeat center;
+    background-attachment: scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+}
+
+.section-lead h1 {
+    font-size: 4.5rem;
+    color: #000;
+    padding-top: 250px;
+    font-family: 'Parisienne', cursive;
+}
+
+h2,
+h3 {
+    font-family: 'Abril Fatface', cursive;
+}
+
+p,
+.lead{
+    font-family: 'Comfortaa', cursive;
+}
+/**Home**/
+
 /**Accounts**/
 
-.profile-image{
+.profile-image {
     display: block;
     height: 15rem;
     margin: 0 auto;
@@ -24,7 +60,7 @@ body > header > nav{
 /**Reviews**/
 
 .img-circle,
-.img-blogpost{
+.img-blogpost {
     display: block;
     height: 10rem;
     margin: 0 auto;
@@ -37,6 +73,7 @@ body > header > nav{
 /**Suggestions**/
 
 /**Products**/
+
 .product-image {
     display: block;
     height: 15rem;

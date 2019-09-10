@@ -17,7 +17,7 @@
 				<a href="{% url 'product_detail' product.id %}"><img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}"/></a>
 
 				<h3>{{ product.name }}</h3>
-				<p class="product-description">{{ product.description }}</p>
+				<p class="product-description">{{ product.description|truncatechars:50|capfirst }}</p>
 			</div>
 		</div>
 		{% endfor %}
