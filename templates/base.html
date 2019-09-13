@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    
+
     <header>
         <nav class="navbar navbar-expand-xl navbar-custom">
             <a class="navbar-brand" href="{% url 'home' %}"><img class="logo" src="/static/img/logo.png" alt="Confectionery Castle"></img></a>
@@ -66,7 +66,7 @@
             </div>
         </nav>
     </header>
-    
+
     <div class="container content-container">
         <!-- Django alert messages to inform users when they have logged in, logged out or registered-->
         {% if messages %} {% for message in messages %}
@@ -76,16 +76,34 @@
             </div>
         </div>
         {% endfor %} {% endif %}
-    </div>    
-        {% block heading %} {% endblock %} {% block content %} {% endblock %}
+    </div>
+    {% block heading %} {% endblock %} {% block content %} {% endblock %}
+    <hr>
+    <footer>
+       <div class="row pt-4">
+			<div class="col-12 text-center footer-links">
+				<a href="https://twitter.com/" target="_blank">
+					<i class="twitter fab fa-twitter fa-2x" aria-hidden="true"></i>
+				</a>
+				<a href="https://facebook.com" target="_blank">
+					<i class="facebook fab fa-facebook-f fa-2x" aria-hidden="true"></i>
+				</a>
+				<a href="https://linkedin.com" target="_blank">
+					<i class="linkedin fab fa-linkedin-in fa-2x" aria-hidden="true"></i>
+				</a>
+				<a href="https://instagram.com" target="_blank">
+					<i class="instagram fab fa-instagram fa-2x" aria-hidden="true"></i>
+				</a>
+			</div>
+		</div>
+    </footer>
 
-    
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/scrollify/1.0.19/jquery.scrollify.min.js"></script>
+    
     {% block custom_js %} {% endblock custom_js %}
 </body>
 
