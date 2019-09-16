@@ -44,6 +44,10 @@ p,
 .lead{
     font-family: 'Comfortaa', cursive;
 }
+
+hr {
+	border-bottom: 1px solid #d4af37;
+}
 /**Home**/
 
 /**Accounts**/
@@ -101,6 +105,22 @@ p,
 
 /**Footer**/
 
+footer {
+	padding: 30px 0px 100px;
+	color: #d4af37;
+}
+
+.footer {
+	background-color: #002366;
+}
+
+.footer-card {
+	border-color: transparent;
+}
+
+footer .card {
+	border-color: transparent;
+}
 /*The code for the footer links was adapted from 
 Miroslav Svec */
 

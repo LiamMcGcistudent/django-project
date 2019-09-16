@@ -1,4 +1,10 @@
-{% extends 'base.html' %} {% load static %} {% block content %} {% for review in reviews %}
+{% extends 'base.html' %} {% load static %} {% block content %} 
+<div class="row">
+    <div class="col-12">
+        <p><a href="{% url 'new_review' %}" class="btn btn-success">New Review <i class="fas fa-pen-nib"></i></a></p>
+    </div>
+</div>
+{% for review in reviews %}
 <div class="row">
     <div class="col-md-2 col-sm-3 text-center">
         <a class="story-img" href="#">
@@ -56,9 +62,4 @@
 				{% endif %}
 			</div>
 		</div>
-<div class="row">
-    <div class="col-12">
-        <p><a href="{% url 'new_review' %}" class="btn btn-success">New Review <i class="fas fa-pen-nib"></i></a></p>
-    </div>
-</div>
 {% endblock %}
