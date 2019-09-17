@@ -8,9 +8,8 @@ class UserProfile(models.Model):
 	"""
 
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	first_name = models.TextField(max_length=20)
-	last_name = models.TextField(max_length=50)
-	profile_image = models.FileField(upload_to='images', blank=True)
+	first_name = models.CharField(max_length=20, null=True, blank=True)
+	last_name = models.CharField(max_length=50, null=True, blank=True)
 	joined = models.DateTimeField(default=datetime.now, blank=True)
 	def __str__(self):
 		return self.user.email

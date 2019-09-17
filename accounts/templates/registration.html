@@ -9,8 +9,9 @@
             {% csrf_token %}
             <legend>Create an account</legend>
             {{ form | as_bootstrap }} 
-            <button type="submit" class="btn btn-register">Register</button>
+            <button type="submit" class="btn btn-register btn-success">Register</button>
         </form>
+        <p>Already have an account? Log in <a href="{%url 'login' %}">here</a></p>
     </div>
 </div>
 {% endblock %}
