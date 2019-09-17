@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load bootstrap4 %}
+
+{% block heading %}
+<div class="row">
+  <div class="mx-auto">
+    <h1>
+      <span>Edit Profile</span>
+    </h1>
+  </div>
+</div>
+{% endblock heading %}
+
+{% block content %}
+<!-- Edit profile form-->
+<section class="container pt-5">
+	<div class="row pt-5">
+		<div class="col-12 pt-5">
+			<form method="POST" action="{% url 'edit_profile' %}" class="py-5">
+				{% csrf_token %}
+				<fieldset class="form-group">
+					<legend class="text-center py-3">Edit your profile {{ user|title }}</legend>
+
+					{% bootstrap_form profile_form layout='horizontal' %}
+
+				</fieldset>
+				<div class="form-group text-right">
+					{% buttons %}
+					<button type="submit" class="btn btn-success">Submit changes</button>
+					{% endbuttons %}
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+{% endblock%}
