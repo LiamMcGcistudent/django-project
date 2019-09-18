@@ -5,7 +5,7 @@ body>header>nav {
 }
 
 .nav-item {
-    font-family: 'Parisienne', cursive;
+    font-family: 'Pacifico', cursive;
     font-size: 1.25em;
 }
 
@@ -23,7 +23,7 @@ body>header>nav {
 /**Home**/
 
 .section-lead {
-    background: url("/static/img/array-assorted-assortment-1236680.jpg") no-repeat center;
+    background: url("/static/img/bake-baked-baking-913137.jpg") no-repeat center;
     background-attachment: scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -33,19 +33,21 @@ body>header>nav {
 }
 
 .section-lead h1 {
-    font-size: 4.5rem;
-    color: #000;
+    font-size: 5.5rem;
+    color: #f05e23;
     padding-top: 250px;
     font-family: 'Parisienne', cursive;
 }
 
 h2,
-h3 {
+h3,
+h4 {
     font-family: 'Abril Fatface', cursive;
 }
 
 p,
-.lead{
+.lead,
+.medium {
     font-family: 'Comfortaa', cursive;
 }
 
