@@ -1,18 +1,25 @@
 {% extends 'base.html' %} {% block content %}
 <section class="section">
-	<div class="row row-flex">
-		<div class="display">
+	<div class="row">
+		<div class="col-md-4 ml-auto search">
 			<form action="{% url 'search' %}" method="get">
 				<input type="text" name="q">
 				<button type="submit">Search</button>
 			</form>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-6 mx-auto">
+			<div id="credit-card-errors" style="display: none;">
+				<div id="alert-message block-message success" id="stripe-error-message"></div>
+			</div>
+		</div>
+	</div>
 </section>
 <section>
 	<div class="row">
 		{% for product in products %}
-		<div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
+		<div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 product-padding">
 			<div class="card">
 				<a href="{% url 'product_detail' product.id %}"><img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}"/></a>
 

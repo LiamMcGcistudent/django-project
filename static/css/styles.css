@@ -83,10 +83,17 @@ hr {
 
 /**Products**/
 
+.search {
+	padding-top: 10px;
+}
 .product-image {
     display: block;
     height: 15rem;
     margin: 0 auto;
+}
+
+.product-padding {
+	padding: 10px 0 10px 50px;
 }
 
 .card-img-top {
@@ -108,6 +115,14 @@ hr {
 }
 
 /**Products**/
+
+/**Cart**/
+
+table {
+	margin-top: 50px;
+}
+
+/**Cart**/
 
 /**Footer**/
 

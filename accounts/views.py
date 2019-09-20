@@ -25,7 +25,7 @@ def registration(request):
             username = request.POST.get('username')
             password = request.POST.get('password')
             user = auth.authenticate(username=username, password=password)
-            messages.success(request, f"Account created for {username}.")
+            messages.success(request, f"Account created for {username}.", extra_tags="alert-success")
             return redirect(reverse('login'))
     else:
         form = UserRegistrationForm()
@@ -56,10 +56,10 @@ def login(request):
 
             if user:
                 auth.login(user=user, request=request)
-                messages.success(request, "You have successfully logged in!")
+                messages.success(request, "You have successfully logged in!", extra_tags="alert-success")
                 return redirect(reverse('profile'))
             else:
-                form.add_error(None, "Your username or password is incorrect")
+                messages.error(request, "Your username or password is incorrect", extra_tags="alert-danger")
     else:
         form = UserLoginForm
     return render(request, 'login.html', {'form': form})
@@ -71,5 +71,5 @@ def logout(request):
     Allows a user to logout
     """
     auth.logout(request)
-    messages.success(request, "You have successfully logged out!")
+    messages.success(request, "You have successfully logged out!", extra_tags="alert-info")
     return redirect(reverse('home'))
