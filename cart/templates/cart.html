@@ -36,7 +36,11 @@
                     <td></td>
                     <td>Total(£):</td>
                     <td>{{total}}</td>
+                    {% if not user.is_authenticated %}
+                    <td><a href="{% url 'login' %}" id="checkout" class="btn btn-secondary" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Not logged in"><i class="far fa-credit-card" aria-hidden="true"></i>Checkout</button></td>
+                    {% else %}
                     <td><a href="{% url 'checkout' %}" class="btn btn-success cart-button-margin" role="button"><i class="far fa-credit-card" aria-hidden="true"></i>Checkout</a></td>
+                    {% endif %}
                 </tr>
             </tbody>
 

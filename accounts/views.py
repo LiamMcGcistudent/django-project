@@ -72,4 +72,4 @@ def logout(request):
     """
     auth.logout(request)
     messages.success(request, "You have successfully logged out!", extra_tags="alert-info")
-    return redirect(reverse('home'))
+    return redirect(reverse('login'))

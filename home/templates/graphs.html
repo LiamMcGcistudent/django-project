@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap_tags %}
+{% block title %}Graphs {% endblock %}
+{% block content %}
+<div class="row charts-row">
+    <div class="col-4 chart-col">
+        <h3 class="charts-heading">Most Popular Products</h3>
+        <canvas id="productBarChart"  width="300" height="300"></canvas>
+    </div>
+</div>
+<div class="row charts-row">
+    <div class="col-4 chart-col">
+        <h3 class="charts-heading">Suggestion Status</h3>
+        <canvas id="suggestionPieChart" width="300" height="300"></canvas>
+    </div>
+    <div class="col-4 chart-col">
+        <h3 class="charts-heading">Most Upvoted Suggestions</h3>
+        <canvas id="suggestionBarChart"  width="300" height="300"></canvas>
+    </div>
+</div>
+{% endblock %}
+{% block custom_js %}
+<script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script type="text/javascript"  src="{% static 'js/chart.js' %}"></script>
+{% endblock %}

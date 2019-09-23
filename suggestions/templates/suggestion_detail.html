@@ -6,11 +6,11 @@
     <div class="inline">
         <p class="p5"><span class=""><i class="fa fa-eye p5"></i>{{ suggestion.views }}</span></p>
         <p class="p5"><span class=""><i class="fa fa-arrow-up p5"></i>{{ suggestion.suggestion_upvotes }}</span></p>
-        {% if upvoted %}
+        {% if suggestion.upvoted %}
         <div class='btn btn-secondary'>Upvoted <i class="fa fa-star" aria-hidden="true"></i></div>
         {% endif %}
         {% if not user.is_authenticated %}
-        <div class='btn btn-secondary'>Upvote <i class="fa fa-star" aria-hidden="true"></i></div>
+        <span>Please login to upvote.</span>
         {% else %}
         <a class='btn btn-primary' href="{% url 'upvote_suggestion' suggestion.id %}">Upvote <i class="fa fa-star" aria-hidden="true"></i></a> {% endif %}
     </div>
