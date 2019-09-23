@@ -44,7 +44,7 @@ $(document).ready(function () {
                         display: true,
                         position: "left",
                         labels: {
-                            fontColor: "#f1f1f1",
+                            fontColor: "#ffffff",
                             fontSize: 18
                         }
                     }
@@ -71,19 +71,19 @@ $(document).ready(function () {
                 options: {
                     legend: {
                         labels: {
-                            fontColor: "#f1f1f1"
+                            fontColor: "#ffffff"
                         }
                     },
                     scales: {
                         yAxes: [{
                             ticks: {
                                 beginAtZero: true,
-                                fontColor: "#f1f1f1"
+                                fontColor: "#ffffff"
                             }
                         }],
                         xAxes: [{
                             ticks: {
-                                fontColor: "#f1f1f1"
+                                fontColor: "#ffffff"
                             }
                         }]
                     }
@@ -110,19 +110,19 @@ $(document).ready(function () {
                 options: {
                     legend: {
                         labels: {
-                            fontColor: "#f1f1f1"
+                            fontColor: "#ffffff"
                         }
                     },
                     scales: {
                         yAxes: [{
                             ticks: {
                                 beginAtZero: true,
-                                fontColor: "#f1f1f1"
+                                fontColor: "#ffffff"
                             }
                         }],
                         xAxes: [{
                             ticks: {
-                                fontColor: "#f1f1f1"
+                                fontColor: "#ffffff"
                             }
                         }]
                     }
