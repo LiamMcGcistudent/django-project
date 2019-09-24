@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Suggestion, suggestionUpvote, SuggestionComment
+from django.core.paginator import Paginator
 from django.utils import timezone
 from django.contrib import messages
 from .forms import SuggestionForm, SuggestionCommentForm
@@ -10,6 +11,9 @@ def all_suggestions(request):
     Displays all current suggestions
     """
     suggestions = Suggestion.objects.filter(created_date__lte=timezone.now())
+    paginator = Paginator(suggestions, 5)
+    page = request.GET.get('page')
+    suggestions = paginator.get_page(page)
     
     return render(request,'suggestions.html', {'suggestions':suggestions})
     

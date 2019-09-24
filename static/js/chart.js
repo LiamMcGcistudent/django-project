@@ -35,16 +35,16 @@ $(document).ready(function () {
                     datasets: [
                         {
                             data: suggestion_count,
-                            backgroundColor: ["#488f31", "#de425b", "#e8979a"]
+                            backgroundColor: ["red", "gold", "green"]
                         }
                     ]
                 },
                 options: {
                     legend: {
                         display: true,
-                        position: "left",
+                        position: "top",
                         labels: {
-                            fontColor: "#ffffff",
+                            fontColor: "#000000",
                             fontSize: 18
                         }
                     }
@@ -60,30 +60,30 @@ $(document).ready(function () {
                         label: "# of Votes",
                         data: upvote_count,
                         backgroundColor: [
-                            "#488f31",
-                            "#f0b8b8",
-                            "#83af70",
-                            "#e67f83",
-                            "#bad0af"
+                            "#002366",
+                            "#660023",
+                            "#430066",
+                            "#b3003d",
+                            "#f0352c"
                         ]
                     }]
                 },
                 options: {
                     legend: {
                         labels: {
-                            fontColor: "#ffffff"
+                            fontColor: "#000000"
                         }
                     },
                     scales: {
                         yAxes: [{
                             ticks: {
                                 beginAtZero: true,
-                                fontColor: "#ffffff"
+                                fontColor: "#000000"
                             }
                         }],
                         xAxes: [{
                             ticks: {
-                                fontColor: "#ffffff"
+                                fontColor: "#000000"
                             }
                         }]
                     }
@@ -99,30 +99,30 @@ $(document).ready(function () {
                         label: "# of Views",
                         data: view_count,
                         backgroundColor: [
-                            "#488f31",
-                            "#f0b8b8",
-                            "#83af70",
-                            "#e67f83",
-                            "#bad0af"
+                            "#002366",
+                            "#660023",
+                            "#430066",
+                            "#b3003d",
+                            "#f0352c"
                         ]
                     }]
                 },
                 options: {
                     legend: {
                         labels: {
-                            fontColor: "#ffffff"
+                            fontColor: "#000"
                         }
                     },
                     scales: {
                         yAxes: [{
                             ticks: {
                                 beginAtZero: true,
-                                fontColor: "#ffffff"
+                                fontColor: "#000"
                             }
                         }],
                         xAxes: [{
                             ticks: {
-                                fontColor: "#ffffff"
+                                fontColor: "#000"
                             }
                         }]
                     }

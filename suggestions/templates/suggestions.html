@@ -1,16 +1,20 @@
 {% extends 'base.html' %}{% load static from staticfiles%} {% block title %}Suggestions{% endblock %} {% block heading %}
 <div class="row">
   <div class="mx-auto">
-    <h1>
+    <h1 class="text-center">
       <span>Suggestions</span>
-      <a href="{% url 'make_suggestion' %}"><button type="button" class="btn btn-primary pull-right p5">Make a Suggestion</button></a>
     </h1>
+      {% if not user.is_authenticated %}
+      <span class="text-center">You must be logged in to make a suggestion!</span>
+      {% else %}
+      <a href="{% url 'make_suggestion' %}"><button type="button" class="btn btn-primary suggestion-btn p5">Make a Suggestion</button></a>
+      {% endif %}
   </div>
 </div>
 {% endblock %} {% block content %} {% for suggestion in suggestions %}
 <div class="row">
   <div class="col-sm-12">
-    <div class="card border-primary w-50 mx-auto">
+    <div class="card border-primary suggestion-card w-50 mx-auto">
       {% if suggestion.status == 'To do'%}
       <div class="card-header"><span class="badge badge-danger">{{ suggestion.status }}</span>
       {% elif suggestion.status == 'In progress' %}
@@ -31,4 +35,41 @@
     </div>
   </div>
 </div>
-{% endfor %} {% endblock %}
+{% endfor %}
+<!-- Pagination -->
+<section>
+	<div class="row">
+		<div class="col-12">
+			{% if suggestions.has_other_pages %}
+			<ul class="pagination row justify-content-center">
+				{% if suggestions.has_previous %}
+				<li class="page-item px-1">
+					<a href="?{{ base }}page={{ suggestions.previous_page_number }}" class="page-link">&laquo;</a>
+				</li>
+				{% else %}
+				<li class="page-item disabled px-1">
+					<a class="page-link">&laquo;</a>
+				</li>
+				{% endif %} {% for x in suggestions.paginator.page_range %} {% if suggestions.number == x %}
+				<li class="page-item active px-1">
+					<a class="page-link">{{ x }}</a>
+				</li>
+				{% else %}
+				<li class="page-item px-1">
+					<a href="?{{ base }}page={{ x }}" class="page-link">{{ x }}</a>
+				</li>
+				{% endif %} {% endfor %} {% if suggestions.has_next %}
+				<li class="page-item px-1">
+					<a href="?{{ base }}page={{ suggestions.next_page_number }}" class="page-link">&raquo;</a>
+				</li>
+				{% else %}
+				<li class="page-item disabled px-1">
+					<a class="page-link">&raquo;</a>
+				</li>
+				{% endif %}
+			</ul>
+			{% endif %}
+		</div>
+	</div>
+</section>
+{% endblock %}

@@ -15,11 +15,11 @@ def graphs(request):
 
 
 def graph_data(request):
-    todo_no = Suggestion.objects.filter(status='ToDo').count()
-    doing_no = Suggestion.objects.filter(status='Doing').count()
-    done_no = Suggestion.objects.filter(status='Done').count()
-    suggestion_labels = ['todo', 'doing', 'done']
-    suggestion_count = [todo_no, doing_no, done_no]
+    todo_no = Suggestion.objects.filter(status='To do').count()
+    inprogress_no = Suggestion.objects.filter(status='In progress').count()
+    complete_no = Suggestion.objects.filter(status='Complete').count()
+    suggestion_labels = ['To Do', 'In Progress', 'Complete']
+    suggestion_count = [todo_no, inprogress_no, complete_no]
 
     suggestions = Suggestion.objects.order_by('-suggestion_upvotes')[:5]
     upvote_labels = []

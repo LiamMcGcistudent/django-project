@@ -75,9 +75,36 @@ hr {
     margin: 0 auto;
 }
 
+.review-container {
+	color: #d4af37;
+	background-color: rgba(0, 35, 102, 0.7)
+}
+
+.review-btn {
+	margin-left: 20px;
+}
+
+label {
+	font-weight: bold;
+}
 /**Reviews**/
 
 /**Suggestions**/
+
+.suggestion-btn {
+	margin-left: 50px;
+}
+
+.suggestion-card {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.suggestion-container {
+	color: #d4af37;
+	background-color: rgba(0, 35, 102, 0.7)
+}
+
 
 /**Suggestions**/
 
