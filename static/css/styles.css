@@ -191,20 +191,20 @@ Miroslav Svec */
 
 .twitter {
 	border-radius: 25% 5%;
-	-webkit-animation: twitter 2s alternate infinite;
-	-moz-animation: twitter 2s alternate infinite;
-	-o-animation: twitter 2s alternate infinite;
-	animation: twitter 2s alternate infinite;
+	-webkit-animation: twitter 1s alternate infinite;
+	-moz-animation: twitter 1s alternate infinite;
+	-o-animation: twitter 1s alternate infinite;
+	animation: twitter 1s alternate infinite;
 }
 .footer a .fa-twitter:hover {
-	background-color: #1da1f2;
+	background-color: #d4af37;
 }
 @-webkit-keyframes twitter {
 	from {
 		background: transparent;
 	}
 	to {
-		background: #1da1f2;
+		background: #d4af37;
 	}
 
 }
@@ -213,7 +213,7 @@ Miroslav Svec */
 		background: transparent;
 	}
 	to {
-		background: #1da1f2;
+		background: #d4af37;
 	}
 
 }
@@ -222,7 +222,7 @@ Miroslav Svec */
 		background: transparent;
 	}
 	to {
-		background: #1da1f2;
+		background: #d4af37;
 	}
 
 }
@@ -231,25 +231,25 @@ Miroslav Svec */
 		background: transparent;
 	}
 	to {
-		background: #1da1f2;
+		background: #d4af37;
 	}
 
 }
 .facebook {
-	-webkit-animation: facebook 2s 0.6s alternate infinite;
-	-moz-animation: facebook 2s 0.6s alternate infinite;
-	-o-animation: facebook 2s 0.6s alternate infinite;
-	animation: facebook 2s 0.6s alternate infinite;
+	-webkit-animation: facebook 1s 0.25s alternate infinite;
+	-moz-animation: facebook 1s 0.25s alternate infinite;
+	-o-animation: facebook 1s 0.25s alternate infinite;
+	animation: facebook 1s 0.25s alternate infinite;
 }
 .footer a .fa-facebook-f:hover {
-	background-color: #4267b2;
+	background-color: #fa7921;
 }
 @-webkit-keyframes facebook {
 	from {
 		background: transparent;
 	}
 	to {
-		background: #4267b2;
+		background: #fa7921;
 	}
 
 }
@@ -258,7 +258,7 @@ Miroslav Svec */
 		background: transparent;
 	}
 	to {
-		background: #4267b2;
+		background: #fa7921;
 	}
 
 }
@@ -267,7 +267,7 @@ Miroslav Svec */
 		background: transparent;
 	}
 	to {
-		background: #4267b2;
+		background: #fa7921;
 	}
 
 }
@@ -276,25 +276,25 @@ Miroslav Svec */
 		background: transparent;
 	}
 	to {
-		background: #4267b2;
+		background: #fa7921;
 	}
 
 }
 .linkedin {
-	-webkit-animation: linkedin 2s 1.1s  alternate infinite;
-	-moz-animation: linkedin 2s 1.1s alternate infinite;
-	-o-animation: linkedin 2s 1.1s alternate infinite;
-	animation: linkedin 2s 1.1s alternate infinite;
+	-webkit-animation: linkedin 1s 0.5s  alternate infinite;
+	-moz-animation: linkedin 1s 0.5s alternate infinite;
+	-o-animation: linkedin 1s 0.5s alternate infinite;
+	animation: linkedin 1s 0.5s alternate infinite;
 }
 .footer a .fa-linkedin-in:hover {
-	background-color: #0077b5;
+	background-color: #06d6a0;
 }
 @-webkit-keyframes linkedin {
 	from {
 		background: transparent;
 	}
 	to {
-		background: #0077b5;
+		background: #06d6a0;
 	}
 
 }
@@ -303,7 +303,7 @@ Miroslav Svec */
 		background: transparent;
 	}
 	to {
-		background: #0077b5;
+		background: #06d6a0;
 	}
 
 }
@@ -312,7 +312,7 @@ Miroslav Svec */
 		background: transparent;
 	}
 	to {
-		background: #0077b5;
+		background: #06d6a0;
 	}
 
 }
@@ -321,25 +321,25 @@ Miroslav Svec */
 		background: transparent;
 	}
 	to {
-		background: #0077b5;
+		background: #06d6a0;
 	}
 
 }
 .instagram {
-	-webkit-animation: instagram 2s 1.6s alternate infinite;
-	-moz-animation: instagram 2s 1.6s alternate infinite;
-	-o-animation: instagram 2s 1.6s alternate infinite;
-	animation: instagram 2s 1.6s alternate infinite;
+	-webkit-animation: instagram 1s 0.75s alternate infinite;
+	-moz-animation: instagram 1s 0.75s alternate infinite;
+	-o-animation: instagram 1s 0.75s alternate infinite;
+	animation: instagram 1s 0.75s alternate infinite;
 }
 .footer a .fa-instagram:hover {
-	background-color: #d5298d;
+	background-color: #f2545b;
 }
 @-webkit-keyframes instagram {
 	from {
 		background: transparent;
 	}
 	to {
-		background: #d5298d;
+		background: #f2545b;
 	}
 
 }
@@ -348,7 +348,7 @@ Miroslav Svec */
 		background: transparent;
 	}
 	to {
-		background: #d5298d;
+		background: #f2545b;
 	}
 
 }
@@ -357,7 +357,7 @@ Miroslav Svec */
 		background: transparent;
 	}
 	to {
-		background: #d5298d;
+		background: #f2545b;
 	}
 
 }
@@ -366,7 +366,7 @@ Miroslav Svec */
 		background: transparent;
 	}
 	to {
-		background: #d5298d;
+		background: #f2545b;
 	}
 
 }
