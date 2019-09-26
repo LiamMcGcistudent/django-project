@@ -32,3 +32,20 @@
     <li><a href="/wireframes/Cart.png" target="_blank">Cart</a></li>
     <li><a href="/wireframes/Profile.png" target="_blank">Profile</a></li>
 </ul>
+
+<h2>Existing Features</h2>
+
+<ul>
+    <li>Navbar with a logo that links to the home page, and navbar links to all other available pages (Products, Reviews, Suggestions, Stats, Login, Cart and Profile).</li>
+    <li>User Registration - To create an account a user must enter an email address, username and password and their first and last names. This functionality was implemented using Django's authentication system. Once they have created an account the user is redirected to the login page.</li>
+    <li>Login - A registered user can login using their username and password. Once a user has successfully logged in, they will be redirected to their profile page.</li>
+    <li>Logout - A user can log out at any time by clicking on the Logout link on the right-hand side of the navbar. Once logged out the user will be redirected to the Login page.</li>
+    <li>User Profile - A logged in user can visit their profile page by clicking on the relevant link in the navbar. The profile page displays their email address, sign-up date and last log in date.</li>
+    <li>Products - If a user clicks on 'Products' in the navbar they will be taken to a page containing a list of all the available products. The card displays an image of the product, the name and a partial of the description for the product. Clicking on it links to a more detailed view of the product which gives a full description and the price, as well as the option for the user to add it to their cart.</li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+

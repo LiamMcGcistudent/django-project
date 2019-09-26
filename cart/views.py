@@ -25,14 +25,12 @@ def adjust(request, id):
     Adjust the quantity of the specified product to the specified
     amount
     """
-    print(request.POST)
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
 
-    if quantity >= 0:
+    if quantity > 0:
         cart[id] = quantity
     else:
-        cart.pop(id)
-    
+        cart.pop(str(id))
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
