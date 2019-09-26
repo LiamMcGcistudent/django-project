@@ -1,17 +1,16 @@
-{% extends 'base.html' %}
-{% load bootstrap_tags %}
-{% block title %} Register {% endblock %}
-{% block content %}
-<div class="row">
-    <div class="col-sm-12 col-md-6 offset-md-3 offset-lg-3 col-lg-5">
-        <!--Displays a User Registration Form-->
-        <form method="POST" class="user-form registration-form">
-            {% csrf_token %}
-            <legend>Create an account</legend>
-            {{ form | as_bootstrap }} 
-            <button type="submit" class="btn btn-register btn-success">Register</button>
-        </form>
-        <p>Already have an account? Log in <a href="{%url 'login' %}">here</a></p>
+{% extends 'base.html' %} {% load bootstrap_tags %} {% block title %} Register {% endblock %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 offset-md-3 offset-lg-3 col-lg-5">
+            <!--Displays a User Registration Form-->
+            <form method="POST" class="user-form registration-form">
+                {% csrf_token %}
+                <legend>Create an account</legend>
+                {{ form | as_bootstrap }}
+                <button type="submit" class="btn btn-register btn-success">Register</button>
+            </form>
+            <p>Already have an account? Log in <a href="{%url 'login' %}">here</a></p>
+        </div>
     </div>
 </div>
 {% endblock %}

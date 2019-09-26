@@ -10,7 +10,7 @@ def all_suggestions(request):
     """
     Displays all current suggestions
     """
-    suggestions = Suggestion.objects.filter(created_date__lte=timezone.now())
+    suggestions = Suggestion.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')
     paginator = Paginator(suggestions, 5)
     page = request.GET.get('page')
     suggestions = paginator.get_page(page)

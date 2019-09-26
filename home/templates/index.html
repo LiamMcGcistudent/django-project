@@ -1,25 +1,26 @@
-{% extends 'base.html' %}{% load static from staticfiles %}
-{% block content %}
+{% extends 'base.html' %}{% load static from staticfiles %} {% block content %}
 <section class="section-lead">
-    
+    <div class="container">
         <div class="row">
             <div class="col-12 text-center">
                 <h1>Confectionery Castle</h1>
             </div>
         </div>
-    
+    </div>
 </section>
 <hr>
 <section id="">
-    <h2 class="text-center pt-5 pb-2">A little bit about us</h2>
-    <p class="lead">We are Confectionery Castle, a small start up company based in Northern Ireland. We make all things sweet, from cakes to pastries and beyond! Our aim is to provide the best quality bakes for the best possible price on the internet! We hope you give
-        us a try and if you like us, why not tell a friend or family member and help us expand our reach.</p>
-    <hr class="section-hr my2">
-    <h3 class="text-center pt-5 pb-2">Check out our bakes!</h3>
-    <p>We have many treats to choose from,<a href="{% url 'products' %}"> check them out here</a></p>
-    <hr class="section-hr my2">
-    <h3 class="text-center pt-5 pb-2">Testimonials</h3>
-    <p>Don't take it from us how good our bakes are, <a href="{% url 'reviews' %}">see what other people have to say about our wares!</a></p>
+    <div class="container">
+        <h2 class="text-center pt-5 pb-2">A little bit about us</h2>
+        <p class="lead">We are Confectionery Castle, a small start up company based in Northern Ireland. We make all things sweet, from cakes to pastries and beyond! Our aim is to provide the best quality bakes for the best possible price on the internet! We hope you
+            give us a try and if you like us, why not tell a friend or family member and help us expand our reach.</p>
+        <hr class="section-hr my2">
+        <h3 class="text-center pt-5 pb-2">Check out our bakes!</h3>
+        <p>We have many treats to choose from,<a href="{% url 'products' %}"> check them out here</a></p>
+        <hr class="section-hr my2">
+        <h3 class="text-center pt-5 pb-2">Testimonials</h3>
+        <p>Don't take it from us how good our bakes are, <a href="{% url 'reviews' %}">see what other people have to say about our wares!</a></p>
+    </div>
 </section>
 
 

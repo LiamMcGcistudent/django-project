@@ -1,54 +1,48 @@
 {% extends 'base.html' %} {% load bootstrap_tags %} {% block title %}{{ suggestion.title }}{% endblock %} {% block content %}
-<a class="btn btn-outline-danger btn-back" onclick="history.go(-1)">Back</a>
-<div class="jumbotron">
-    <div class="inline">
-        <h1>{{ suggestion.title }}</h1><span class="badge badge-danger">{{ suggestion.status }}</span>
+<div class="container">
+    <a class="btn btn-outline-danger btn-back" onclick="history.go(-1)">Back</a>
+    <div class="jumbotron">
+        <div class="inline">
+            <h1>{{ suggestion.title }}</h1><span class="badge badge-danger">{{ suggestion.status }}</span>
+        </div>
+        <div class="inline">
+            <p class="p5"><span class=""><i class="fa fa-eye p5"></i>{{ suggestion.views }}</span></p>
+            <p class="p5"><span class=""><i class="fa fa-arrow-up p5"></i>{{ suggestion.suggestion_upvotes }}</span></p>
+            {% if not user.is_authenticated %}
+            <span>Please login to upvote.</span> {% else %}
+            <a class='btn btn-primary' href="{% url 'upvote_suggestion' suggestion.id %}">Upvote <i class="fa fa-star" aria-hidden="true"></i></a> {% endif %}
+        </div>
+        <p class="lead">{{ suggestion.content }}</p>
+        <hr class="my-4">
+        <p>Suggested by: {{suggestion.suggested_by }} on {{ suggestion.created_date }}</p>
     </div>
-    <div class="inline">
-        <p class="p5"><span class=""><i class="fa fa-eye p5"></i>{{ suggestion.views }}</span></p>
-        <p class="p5"><span class=""><i class="fa fa-arrow-up p5"></i>{{ suggestion.suggestion_upvotes }}</span></p>
-        {% if not user.is_authenticated %}
-        <span>Please login to upvote.</span>
-        {% else %}
-        <a class='btn btn-primary' href="{% url 'upvote_suggestion' suggestion.id %}">Upvote <i class="fa fa-star" aria-hidden="true"></i></a> {% endif %}
-    </div>
-    <p class="lead">{{ suggestion.content }}</p>
-    <hr class="my-4">
-    <p>Suggested by: {{suggestion.suggested_by }} on {{ suggestion.created_date }}</p>
-</div>
-<hr>
-<div class="col-sm-12">
+    <hr>
+    <div class="col-sm-12">
 
         <form method="POST">
             <fieldset>
                 <h1>Comments:</h1>
-                {% csrf_token %} {{ comment_form|as_bootstrap }}
-                {% if user.is_authenticated %}
-                <button type="submit" class="btn btn-primary">Submit</button>
-                {% else %}
+                {% csrf_token %} {{ comment_form|as_bootstrap }} {% if user.is_authenticated %}
+                <button type="submit" class="btn btn-primary">Submit</button> {% else %}
                 <p><strong>Please login to leave a comment.</strong></p>
-                <button type="button" class="btn btn-primary disabled">Submit</button>
-                {% endif %}
-                
+                <button type="button" class="btn btn-primary disabled">Submit</button> {% endif %}
+
             </fieldset>
         </form>
-        
+
         {% if comments.count == 0 %}
-        <br> 
+        <br>
         <h4>There are no comments yet!</h4>
-        {% else %}
-        
-        {% for comment in comments %}
+        {% else %} {% for comment in comments %}
         <hr class="my-4">
         <blockquote class="blockquote text-left">
             <p class="mb-0">{{ comment.comment|capfirst }}</p>
-            <footer class="blockquote-footer">{{ comment.review|capfirst }}<cite title="Source Title" class="title"> | {{ comment.posted_by|capfirst }}</cite>
-            <datetime> on {{ comment.created_date }}</datetime></footer>
+            <footer class="blockquote-footer">{{ comment.posted_by|capfirst }}</cite>
+                <datetime> on {{ comment.created_date }}</datetime>
+            </footer>
         </blockquote>
-        {% endfor %}
-        
-        {% endif %}
+        {% endfor %} {% endif %}
 
     </div>
-
+</div>
 {% endblock %}

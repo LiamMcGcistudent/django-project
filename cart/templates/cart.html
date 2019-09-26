@@ -1,51 +1,53 @@
 {% extends 'base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block content %}
-<div class="row">
-    <div class="col-12">
-        <table class="table-dark table-sm table-bordered table-hover text-center mx-auto">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Item</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Amend</th>
-                </tr>
-            </thead>
-            {% for item in cart_items %}
-            <tbody>
-                <tr>
-                    <th scope="row"></th>
-                    <td>{{item.product.name}}</td>
-                    <td>{{item.quantity}}</td>
-                    <td>{{item.product.price}}</td>
-                    <td>
-                        <form class="form-inline" method="post" action="{% url 'adjust' item.id %}">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <input name="quantity" type="number" min="0" max="999" class="form-control">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table-dark table-sm table-bordered table-hover text-center mx-auto">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Amend</th>
+                    </tr>
+                </thead>
+                {% for item in cart_items %}
+                <tbody>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>{{item.product.name}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.product.price}}</td>
+                        <td>
+                            <form class="form-inline" method="post" action="{% url 'adjust' item.id %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input name="quantity" type="number" min="0" max="999" class="form-control">
+                                    </div>
                                 </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Amend</button>
-                        </form>
-                    </td>
-                </tr>
-                {% endfor %}
-                <tr>
-                    <th scope="row"></th>
-                    <td></td>
-                    <td>Total(£):</td>
-                    <td>{{total}}</td>
-                    {% if not user.is_authenticated %}
-                    <td><a href="{% url 'login' %}" id="checkout" class="btn btn-secondary" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Not logged in"><i class="far fa-credit-card" aria-hidden="true"></i>Checkout</button></td>
+                                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Amend</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                        <td>Total(£):</td>
+                        <td>{{total}}</td>
+                        {% if not user.is_authenticated %}
+                        <td><a href="{% url 'login' %}" id="checkout" class="btn btn-secondary" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Not logged in"><i class="far fa-credit-card" aria-hidden="true"></i>Checkout</button></td>
                     {% else %}
                     <td><a href="{% url 'checkout' %}" class="btn btn-success cart-button-margin" role="button"><i class="far fa-credit-card" aria-hidden="true"></i>Checkout</a></td>
-                    {% endif %}
-                </tr>
-            </tbody>
+                        {% endif %}
+                    </tr>
+                </tbody>
 
-        </table>
-        
+            </table>
+
+        </div>
     </div>
 </div>
 {% endblock %}

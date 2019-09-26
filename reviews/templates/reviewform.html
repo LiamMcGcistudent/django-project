@@ -3,11 +3,11 @@
 {% load bootstrap_tags %}
 {% block content %}
 <div class="container review-container">
-    <h1>New Review</h1>
+    <h1 class="suggestion-title">New Review</h1>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | as_bootstrap }}
-        <button type="submit" class="btn btn-info">Save</button>
+        <button type="submit" class="btn btn-info ml-auto">Save</button>
     </form>
 </div>
 {% endblock %}

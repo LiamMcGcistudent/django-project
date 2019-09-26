@@ -1,16 +1,19 @@
 {% extends 'base.html' %} {% load staticfiles %} {% block title %}{{user}}'s profile{% endblock %} {% block content %}
-<div class="row">
-    <div class="col-sm-12">
-        <h1 class="profile-heading">{{user}}'s profile page</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 class="profile-heading">{{user}}'s profile page</h1>
+        </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-sm-12 offset-md-3 col-md-6 offset-lg-4 col-lg-4 info-col">
-        <img class="profile-image" src="{{user.img.url}}" onerror="this.src='/static/img/blank-profile-picture-973460_960_720.png'" alt="Profile Picture">
-        <p class="profile-paragraph"><strong>Email: </strong> {{user.email}}</p>
-        <p class="profile-paragraph"><strong>Joined: </strong> {{user.date_joined}}</p>
-        <p class="profile-paragraph"><strong>Last Log In: </strong> {{user.last_login}}</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 offset-md-3 col-md-6 offset-lg-4 col-lg-4 info-col">
+            <img class="profile-image" src="{{user.img.url}}" onerror="this.src='/static/img/blank-profile-picture-973460_960_720.png'" alt="Profile Picture">
+            <p class="profile-paragraph"><strong>Email: </strong> {{user.email}}</p>
+            <p class="profile-paragraph"><strong>Joined: </strong> {{user.date_joined}}</p>
+            <p class="profile-paragraph"><strong>Last Log In: </strong> {{user.last_login}}</p>
+        </div>
     </div>
 </div>
-
 {% endblock %}

@@ -5,7 +5,7 @@ from .models import Product
 
 # Create your views here.
 def all_products(request):
-    products = Product.objects.all()
+    products = Product.objects.filter().order_by('name')
     paginator = Paginator(products, 6)
     page = request.GET.get('page')
     products = paginator.get_page(page)

@@ -1,5 +1,9 @@
 /**Navbar**/
 
+html {
+	overflow-x: hidden;
+}
+
 body>header>nav {
     background-color: #002366 !important;
 }
@@ -39,6 +43,7 @@ body>header>nav {
     font-family: 'Parisienne', cursive;
 }
 
+
 h2,
 h3,
 h4 {
@@ -55,6 +60,14 @@ hr {
 	border-bottom: 1px solid #d4af37;
 }
 /**Home**/
+
+/**Graphs**/
+
+.chart {
+		padding-top: 20px;
+	}
+
+/**Graphs**/
 
 /**Accounts**/
 
@@ -76,6 +89,9 @@ hr {
 }
 
 .review-container {
+	margin-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 10px;
 	color: #d4af37;
 	background-color: rgba(0, 35, 102, 0.7)
 }
@@ -84,12 +100,24 @@ hr {
 	margin-left: 20px;
 }
 
+.review-row {
+	margin-top: 10px;
+}
+
 label {
 	font-weight: bold;
+	font-family: 'Comfortaa', cursive;
 }
 /**Reviews**/
 
 /**Suggestions**/
+
+.card-header {
+	border-left: 1px solid #002366;
+    border-right: 1px solid #002366;
+    border-top: 1px solid #002366;
+    border-radius: 15px 15px 0 0!important;
+}
 
 .suggestion-btn {
 	margin-left: 50px;
@@ -105,6 +133,9 @@ label {
 	background-color: rgba(0, 35, 102, 0.7)
 }
 
+.suggestion-title {
+	font-family: 'Abril Fatface', cursive;
+}
 
 /**Suggestions**/
 
@@ -124,9 +155,9 @@ label {
 }
 
 .card-img-top {
-    border-radius: 15px;
+    border-radius: 15px 15px 0 0;
     height: 250px;
-    width: 250px;
+    
 }
 
 .card {
@@ -135,10 +166,15 @@ label {
 }
 
 .card-body {
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
-    border-radius: 15px;
+    border-left: 1px solid #002366;
+    border-right: 1px solid #002366;
+    border-bottom: 1px solid #002366;
+    border-top: 1px solid #002366;
+    border-radius: 0 0 15px 15px;
+}
+
+.product-border {
+	border: 1px solid #002366;
 }
 
 /**Products**/
@@ -169,6 +205,8 @@ footer {
 footer .card {
 	border-color: transparent;
 }
+
+
 /*The code for the footer links was adapted from 
 Miroslav Svec */
 
@@ -369,4 +407,12 @@ Miroslav Svec */
 		background: #f2545b;
 	}
 
+}
+
+/**Media Queries**/
+
+@media (min-width:300px) and (max-width: 767px) {
+	.section-lead h1 {
+		font-size: 3.5em;
+	}
 }

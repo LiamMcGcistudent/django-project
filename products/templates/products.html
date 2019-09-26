@@ -1,61 +1,67 @@
 {% extends 'base.html' %} {% block content %}
 <section class="section">
-	<div class="row">
-		<div class="col-md-4 ml-auto search">
-			<form action="{% url 'search' %}" method="get">
-				<input type="text" name="q">
-				<button type="submit">Search</button>
-			</form>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-4 ml-auto search">
+				<form action="{% url 'search' %}" method="get">
+					<input type="text" name="q">
+					<button type="submit">Search</button>
+				</form>
+			</div>
 		</div>
 	</div>
 </section>
 <section>
-	<div class="row">
-		{% for product in products %}
-		<div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 product-padding">
-			<div class="card">
-				<a href="{% url 'product_detail' product.id %}"><img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}"/></a>
+	<div class="container">
+		<div class="row">
+			{% for product in products %}
+			<div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 product-padding">
+				<div class="card product-border">
+					<a href="{% url 'product_detail' product.id %}"><img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}"/></a>
 
-				<h3>{{ product.name }}</h3>
-				<p class="product-description">{{ product.description|truncatechars:50|capfirst }}</p>
+					<h3>{{ product.name }}</h3>
+					<p class="product-description">{{ product.description|truncatechars:50|capfirst }}</p>
+				</div>
 			</div>
+			{% endfor %}
 		</div>
-		{% endfor %}
 	</div>
 </section>
 <!-- Pagination -->
 <section>
-	<div class="row">
-		<div class="col-12">
-			{% if products.has_other_pages %}
-			<ul class="pagination row justify-content-center">
-				{% if products.has_previous %}
-				<li class="page-item px-1">
-					<a href="?{{ base }}page={{ products.previous_page_number }}" class="page-link">&laquo;</a>
-				</li>
-				{% else %}
-				<li class="page-item disabled px-1">
-					<a class="page-link">&laquo;</a>
-				</li>
-				{% endif %} {% for x in products.paginator.page_range %} {% if products.number == x %}
-				<li class="page-item active px-1">
-					<a class="page-link">{{ x }}</a>
-				</li>
-				{% else %}
-				<li class="page-item px-1">
-					<a href="?{{ base }}page={{ x }}" class="page-link">{{ x }}</a>
-				</li>
-				{% endif %} {% endfor %} {% if products.has_next %}
-				<li class="page-item px-1">
-					<a href="?{{ base }}page={{ products.next_page_number }}" class="page-link">&raquo;</a>
-				</li>
-				{% else %}
-				<li class="page-item disabled px-1">
-					<a class="page-link">&raquo;</a>
-				</li>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				{% if products.has_other_pages %}
+				<ul class="pagination row justify-content-center">
+					{% if products.has_previous %}
+					<li class="page-item px-1">
+						<a href="?{{ base }}page={{ products.previous_page_number }}" class="page-link">&laquo;</a>
+					</li>
+					{% else %}
+					<li class="page-item disabled px-1">
+						<a class="page-link">&laquo;</a>
+					</li>
+					{% endif %} {% for x in products.paginator.page_range %} {% if products.number == x %}
+					<li class="page-item active px-1">
+						<a class="page-link">{{ x }}</a>
+					</li>
+					{% else %}
+					<li class="page-item px-1">
+						<a href="?{{ base }}page={{ x }}" class="page-link">{{ x }}</a>
+					</li>
+					{% endif %} {% endfor %} {% if products.has_next %}
+					<li class="page-item px-1">
+						<a href="?{{ base }}page={{ products.next_page_number }}" class="page-link">&raquo;</a>
+					</li>
+					{% else %}
+					<li class="page-item disabled px-1">
+						<a class="page-link">&raquo;</a>
+					</li>
+					{% endif %}
+				</ul>
 				{% endif %}
-			</ul>
-			{% endif %}
+			</div>
 		</div>
 	</div>
 </section>

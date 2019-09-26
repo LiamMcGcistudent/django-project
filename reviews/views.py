@@ -55,7 +55,7 @@ def create_or_edit_review(request, pk=None):
         form = ReviewForm(request.POST, request.FILES, instance=review)
         if form.is_valid():
             review = form.save()
-            return redirect(full_review, review.pk)
+            return redirect(get_reviews)
     else:
         form = ReviewForm(instance=review)
     return render(request, 'reviewform.html', {'form': form})
