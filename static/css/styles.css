@@ -147,7 +147,7 @@ label {
 .product-image {
     display: block;
     height: 15rem;
-    margin: 0 auto;
+    margin: 0;
 }
 
 .product-padding {
@@ -175,6 +175,15 @@ label {
 
 .product-border {
 	border: 1px solid #002366;
+}
+
+.btn-back {
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.btn-add {
+	margin-left: 5px;
 }
 
 /**Products**/
@@ -414,5 +423,11 @@ Miroslav Svec */
 @media (min-width:300px) and (max-width: 767px) {
 	.section-lead h1 {
 		font-size: 3.5em;
+	}
+}
+
+@media (max-width: 767px) {
+	.product-image {
+		width: 90%;
 	}
 }
