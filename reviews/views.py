@@ -54,7 +54,9 @@ def create_or_edit_review(request, pk=None):
     if request.method == "POST":
         form = ReviewForm(request.POST, request.FILES, instance=review)
         if form.is_valid():
-            review = form.save()
+            review = form.save(commit=False)
+            review.written_by = request.user
+            review.save()
             return redirect(get_reviews)
     else:
         form = ReviewForm(instance=review)
