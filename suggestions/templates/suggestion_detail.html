@@ -3,7 +3,7 @@
     <a class="btn btn-outline-danger btn-back" onclick="history.go(-1)">Back</a>
     <div class="jumbotron">
         <div class="inline">
-            <h1>{{ suggestion.title }}</h1><span class="badge badge-danger">{{ suggestion.status }}</span>
+            <h1 class="title">{{ suggestion.title }}</h1><span class="badge badge-danger">{{ suggestion.status }}</span>
         </div>
         <div class="inline">
             <p class="p5"><span class=""><i class="fa fa-eye p5"></i>{{ suggestion.views }}</span></p>
@@ -21,7 +21,7 @@
 
         <form method="POST">
             <fieldset>
-                <h1>Comments:</h1>
+                <h1 class="title">Comments:</h1>
                 {% csrf_token %} {{ comment_form|as_bootstrap }} {% if user.is_authenticated %}
                 <button type="submit" class="btn btn-primary">Submit</button> {% else %}
                 <p><strong>Please login to leave a comment.</strong></p>

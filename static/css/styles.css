@@ -46,7 +46,8 @@ body>header>nav {
 
 h2,
 h3,
-h4 {
+h4,
+.title {
     font-family: 'Abril Fatface', cursive;
 }
 
