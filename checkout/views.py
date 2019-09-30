@@ -40,19 +40,20 @@ def checkout(request):
 
                 try:
                     customer = charge_card(stripe_token, total)
-                except stripe.error:
-                    messages.error(request, "Your card was declined!")
+                except stripe.error.CardError:
+                    messages.error(request, "Your card was declined!", extra_tags="alert-danger")
+                    
+                try:
+                    if customer.paid:
+                         messages.error(request, "You have successfully paid", extra_tags="alert-success")
+                         request.session['cart'] = {}
+                         return redirect(reverse('products'))
+                except: 
+                    messages.error(request, "Unable to take payment", extra_tags="alert-warning")
 
-                if customer.paid:
-                     messages.error(request, "You have successfully paid")
-                     request.session['cart'] = {}
-                     return redirect(reverse('products'))
-                else:
-                     messages.error(request, "Unable to take payment")
-
-                # Clear the Cart
-                del request.session['cart']
-                return redirect('products')
+                    # Clear the Cart
+                    del request.session['cart']
+                    return redirect('products')
 
             else:
                 order_form = OrderForm()
