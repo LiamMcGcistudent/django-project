@@ -12,13 +12,13 @@
                         <th scope="col">Amend</th>
                     </tr>
                 </thead>
-                {% for item in cart %}
+                {% for item in cart_items %}
                 <tbody>
                     <tr>
                         <th scope="row"></th>
-                        <td>{{item.product}}</td>
+                        <td>{{item.product.name}}</td>
                         <td>{{item.quantity}}</td>
-                        <td>{{item.price}}</td>
+                        <td>{{item.product.price}}</td>
                         <td>
                             <form class="form-inline" method="post" action="{% url 'adjust' item.id %}">
                                 {% csrf_token %}
