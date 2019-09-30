@@ -4,14 +4,14 @@ from django.contrib import messages
 from .forms import MakePaymentForm, OrderForm
 from .models import OrderLineItem
 from django.conf import settings
+from cart.contexts import cart_contents
 from django.utils import timezone
 from products.models import Product
 import stripe
+from .utils import save_order_items, charge_card
 
 
 # Create your views here.
-
-stripe.api_key = settings.STRIPE_SECRET
 
 @login_required()
 def checkout(request):
@@ -19,42 +19,47 @@ def checkout(request):
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
         
-        if order_form.is_valid() and payment_form.is_valid():
-            order = order_form.save(commit=False)
-            order.date = timezone.now()
-            order.save()
-            
-            cart = request.session.get('cart', {})
-            total = 0
-            for id, quantity in cart.items():
-                product = get_object_or_404(Product, pk=id)
-                total += quantity * product.price
-                order_line_item = OrderLineItem(
-                    order = order, 
-                    product = product, 
-                    quantity = quantity
-                    )
-                order_line_item.save()
-                
-            try:
-                customer = stripe.Charge.create(
-                    amount = int(total * 100),
-                    currency = "GBP",
-                    description = request.user.email,
-                    card = payment_form.cleaned_data['stripe_id'],
-                )
-            except stripe.error.CardError:
-                messages.error(request, "Your card was declined!", extra_tags="alert-danger")
-                
-            if customer.paid:
-                messages.success(request, "You have successfully paid! Thank you for your purchase!", extra_tags="alert-success")
-                request.session['cart'] = {}
-                return redirect(reverse('products'))
+        if request.method == "POST":
+            order_form = OrderForm(request.POST)
+            payment_form = MakePaymentForm(request.POST)
+
+            if order_form.is_valid() and payment_form.is_valid():
+                # Save The Order
+                order = order_form.save(commit=False)
+                order.date = timezone.now()
+                order.save()
+
+                # Save the Order Line Items
+                cart = request.session.get('cart', {})
+                save_order_items(order, cart)
+
+                # Charge the Card
+                items_and_total = cart_contents(cart)
+                total = items_and_total['totals']
+                stripe_token = payment_form.cleaned_data['stripe_id']
+
+                try:
+                    customer = charge_card(stripe_token, total)
+                except stripe.error.CardError:
+                    messages.error(request, "Your card was declined!")
+
+                if customer.paid:
+                    messages.error(request,
+                                   "You have successfully paid!")
+
+                    # Clear the Cart
+                    del request.session['cart']
+                    return redirect('products')
+
             else:
-                messages.error(request, "Unable to take payment", extra_tags="alert-warning")
-        else:
-            print(payment_form.errors)
-            messages.error(request, "We were unable to take a payment with that card!", extra_tags="alert-warning")
+                order_form = OrderForm()
+                payment_form = MakePaymentForm()
+                context = {'order_form': order_form,
+                           'payment_form': payment_form,
+                           'publishable': settings.STRIPE_PUBLISHABLE}
+                cart = request.session.get('cart', {})
+                cart_items_and_total = cart_contents(cart)
+                context.update(cart_items_and_total)
     else:
         payment_form = MakePaymentForm()
         order_form = OrderForm()
