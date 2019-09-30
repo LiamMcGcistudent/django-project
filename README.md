@@ -101,6 +101,7 @@
     <li>All images used in the project were obtained from <a href="https://pexels.com">Pexels</a> or from a google search with specifications that the pictures were free to use in the public domain.</li>
     <li>The paginator came from the Django documentation and Corey Schafer's YouTube Django tutorials.</li>
     <li>The idea and code for the animated social links in the footer came from MiroslavSvec</li>
+    <li>The code used for stripe payments was supplemented by code from Haley from Tutor Support.</li>
 </ul>
 
 <h3>Special Thanks</h3>

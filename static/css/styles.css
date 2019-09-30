@@ -47,7 +47,8 @@ body>header>nav {
 h2,
 h3,
 h4,
-.title {
+.title,
+.profile-heading {
     font-family: 'Abril Fatface', cursive;
 }
 
@@ -76,13 +77,24 @@ hr {
     display: block;
     height: 15rem;
     margin: 0 auto;
+    border-radius: 50%;
+}
+
+.profile-heading {
+	text-align: center;
 }
 
 /**Accounts**/
 
 /**Reviews**/
 
-.img-circle,
+.img-circle {
+    display: block;
+    height: 10rem;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
 .img-blogpost {
     display: block;
     height: 10rem;
@@ -146,7 +158,7 @@ label {
 	padding-top: 10px;
 }
 .product-image {
-    display: block;
+    display: inline-block;
     height: 15rem;
     margin: 0;
 }
@@ -432,3 +444,5 @@ Miroslav Svec */
 		width: 90%;
 	}
 }
+
+/**Media Queries**/

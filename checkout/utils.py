@@ -21,9 +21,9 @@ def save_order_items(order, cart):
 
 def charge_card(stripe_token, total):
     """Charge test card in GBP under 'Dummy Transaction'"""
-    total_in_pounds = int(total*100)
+    total_in_pence = int(total*100)
     return stripe.Charge.create(
-        amount=total_in_pounds,
+        amount=total_in_pence,
         currency="GBP",
         description="Dummy Transaction",
         card=stripe_token,

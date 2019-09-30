@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Suggestion, suggestionUpvote, SuggestionComment
 from django.core.paginator import Paginator
 from django.utils import timezone
@@ -64,7 +64,6 @@ def upvote_suggestion(request, pk):
     """Adds one upvote point"""
     suggestion = get_object_or_404(Suggestion, pk=pk)
     suggestion.suggestion_upvotes += 1
-    suggestion.views -= 1
     suggestion.save()
 
     try:
@@ -75,4 +74,5 @@ def upvote_suggestion(request, pk):
     upvote.upvoted_suggestion = suggestion
     upvote.user = request.user
     upvote.save()
-    return(redirect(single_suggestion, pk))
+    messages.success(request, "Thank you for upvoting this suggestion!", extra_tags="alert-info")
+    return(redirect(reverse('suggestions')))

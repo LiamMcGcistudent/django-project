@@ -28,9 +28,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['a2d7b0c726e040cba68a47628bccb09d.vfs.cloud9.us-east-1.amazonaws.com', '127.0.0.1', 'confectionery-castle.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'confectionery-castle.herokuapp.com']
 
 
 # Application definition

@@ -35,7 +35,7 @@ $(document).ready(function () {
                     datasets: [
                         {
                             data: suggestion_count,
-                            backgroundColor: ["red", "gold", "green"]
+                            backgroundColor: ["#DB9065", "#0F8B8D", "#B9929F"]
                         }
                     ]
                 },
@@ -60,11 +60,11 @@ $(document).ready(function () {
                         label: "# of Votes",
                         data: upvote_count,
                         backgroundColor: [
-                            "#002366",
-                            "#660023",
-                            "#430066",
-                            "#b3003d",
-                            "#f0352c"
+                            "#731DD8",
+                            "#48A9A6",
+                            "#49306B",
+                            "#9C528B",
+                            "#4BC6B9"
                         ]
                     }]
                 },

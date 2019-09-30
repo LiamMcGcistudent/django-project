@@ -40,6 +40,7 @@ def checkout(request):
 
                 try:
                     customer = charge_card(stripe_token, total)
+                    
                 except stripe.error.CardError:
                     messages.error(request, "Your card was declined!", extra_tags="alert-danger")
                     
@@ -52,11 +53,10 @@ def checkout(request):
                     # Clear the Cart
                     del request.session['cart']
                     return redirect('products')
+                    
                 except: 
                     messages.error(request, "Unable to take payment", extra_tags="alert-warning")
-
                     
-
             else:
                 order_form = OrderForm()
                 payment_form = MakePaymentForm()
@@ -66,6 +66,7 @@ def checkout(request):
                 cart = request.session.get('cart', {})
                 cart_items_and_total = cart_contents(request)
                 context.update(cart_items_and_total)
+                
     else:
         payment_form = MakePaymentForm()
         order_form = OrderForm()
