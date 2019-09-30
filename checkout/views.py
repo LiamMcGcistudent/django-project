@@ -40,7 +40,7 @@ def checkout(request):
 
                 try:
                     customer = charge_card(stripe_token, total)
-                except stripe.error.CardError:
+                except stripe.error:
                     messages.error(request, "Your card was declined!")
 
                 if customer.paid:
