@@ -34,8 +34,8 @@ def checkout(request):
                 save_order_items(order, cart)
 
                 # Charge the Card
-                items_and_total = cart_contents(cart)
-                total = items_and_total['totals']
+                items_and_total = cart_contents(request)
+                total = items_and_total['total']
                 stripe_token = payment_form.cleaned_data['stripe_id']
 
                 try:
@@ -44,12 +44,15 @@ def checkout(request):
                     messages.error(request, "Your card was declined!")
 
                 if customer.paid:
-                    messages.error(request,
-                                   "You have successfully paid!")
+                     messages.error(request, "You have successfully paid")
+                     request.session['cart'] = {}
+                     return redirect(reverse('products'))
+                else:
+                     messages.error(request, "Unable to take payment")
 
-                    # Clear the Cart
-                    del request.session['cart']
-                    return redirect('products')
+                # Clear the Cart
+                del request.session['cart']
+                return redirect('products')
 
             else:
                 order_form = OrderForm()
@@ -58,7 +61,7 @@ def checkout(request):
                            'payment_form': payment_form,
                            'publishable': settings.STRIPE_PUBLISHABLE}
                 cart = request.session.get('cart', {})
-                cart_items_and_total = cart_contents(cart)
+                cart_items_and_total = cart_contents(request)
                 context.update(cart_items_and_total)
     else:
         payment_form = MakePaymentForm()
