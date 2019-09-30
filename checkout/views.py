@@ -48,12 +48,14 @@ def checkout(request):
                          messages.error(request, "You have successfully paid", extra_tags="alert-success")
                          request.session['cart'] = {}
                          return redirect(reverse('products'))
-                except: 
-                    messages.error(request, "Unable to take payment", extra_tags="alert-warning")
-
+                    
                     # Clear the Cart
                     del request.session['cart']
                     return redirect('products')
+                except: 
+                    messages.error(request, "Unable to take payment", extra_tags="alert-warning")
+
+                    
 
             else:
                 order_form = OrderForm()
